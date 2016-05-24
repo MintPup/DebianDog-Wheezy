@@ -3,7 +3,7 @@
 **1.** Keep only official Wheezy repoes in sources.list (no more special dd-repository for fixes and new packages by default).
 Fixes will be provided different way (maybe as single deb for download and install-reinstall after reading the fixes post).
 
-**2.** Change the main module compression from xz to gzip also in all scripts using mksquashfs command).
+**2.** Change the main module compression from xz to gzip (also in all scripts using mksquashfs command).
 
 **3.** Frisbee will be replaced with Ceni (CLI script using only official Wheezy dependencies).
 
@@ -17,6 +17,7 @@ Add CLI versions for both remasterdog and remastercow.
 
 **7.** Use older ffmpeg2sfs version (without backup-restore option for dpkg files).
 
+**8.** Replace gnome-mplayer-1.0.7 with gmplayer-portable.
 
 
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
