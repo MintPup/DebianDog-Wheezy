@@ -12,5 +12,6 @@ Till then you can download the latest available DebianDog-Wheezy Jwm iso version
 
 https://github.com/DebianDog/Wheezy
 
+I will get back to the starting point first building base version with only live-boot-2 (without yad, without gtkdialog, without porteus-boot scripts, without /opt directory and sh restored to dash). From this point I will try to make command line scripts for frugal and full install, sfs-load, remaster and some more working with dash. The result from this base will tell how DebianDog-Jwm and MintPup development will continue here for me.
 
 
