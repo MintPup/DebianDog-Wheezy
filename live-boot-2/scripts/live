@@ -1114,7 +1114,7 @@ setup_unionfs ()
 
 	if [ "${UNIONTYPE}" = "aufs" ]
 	then
-		roopt="rr"
+		roopt="rr+wh" #saintless - suggestion from fredx181 for .wh support loading squashfs modules.
 		noxino_opt="noxino,"
 	elif [ "${UNIONTYPE}" = "unionfs-fuse" ]
 	then
@@ -1826,6 +1826,7 @@ mountroot ()
 	then
 		mkdir -p /root/live/image
 		mount --move /live/image /root/live/image
+		mount -o remount,rw /root/live/image #saintless - remount if possible boot partition in rw without persistent option.
 	fi
 
 	# aufs2 in kernel versions around 2.6.33 has a regression:
