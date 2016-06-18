@@ -28,7 +28,8 @@ i=`echo "[1;33m""^ ""[0m"`
 m=`echo "[1;33m""->""[0m"`
 arch=`uname -m`; [ $arch = x86_64 ] || arch=i486
 DELAY=`value delay`; [ $DELAY ] && { echo $i"delaying $DELAY sec (waiting for slow devices to settle up)"; sleep $DELAY; }
-SGN=`value sgnfile`; [ $SGN ] || SGN=wheezy-$arch.sgn
+#SGN=`value sgnfile`; [ $SGN ] || SGN=wheezy-$arch.sgn
+SGN=`value sgnfile`; [ $SGN ] || SGN=initrd1.xz
 FROM=`value from`; ISO=`echo $FROM | egrep ".*\.iso( |\$)"`
 IP=`value ip | cut -d: -f2`
 MOPT=`value mopt`; [ $MOPT ] || MOPT="noatime,nodiratime,suid,dev,exec,async"
