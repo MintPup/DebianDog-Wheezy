@@ -1,0 +1,12 @@
+DISTRO_NAME='DebianDog-Wheezy-Puppy'
+DISTRO_VERSION=7.2
+DISTRO_BINARY_COMPAT='debian'
+DISTRO_FILE_PREFIX='debdog'
+DISTRO_COMPAT_VERSION='debian'
+DISTRO_XORG_AUTO='yes'
+DISTRO_TARGETARCH='x86'
+DISTRO_DB_SUBNAME='debian'
+DISTRO_PUPPYSFS=01-filesystem.squashfs
+DISTRO_ZDRVSFS=kernel-modules.sfs
+DISTRO_ADRVSFS='adrv_debdog.sfs'
+DISTRO_YDRVSFS='ydrv_debdog.sfs'
