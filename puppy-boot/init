@@ -1381,8 +1381,8 @@ if [ "$ZDRVINIT" = "yes" ];then
  if [ "$REASON" != "" ];then
   [ -d /pup_rw/lib/modules ] && rm -rf /pup_rw/lib/modules
   [ -d /pup_ro1/lib/modules ] && rm -rf /pup_ro1/lib/modules
-  mkdir -p /pup_rw/lib
-  mv /lib/modules /pup_rw/lib/
+  #mkdir -p /pup_rw/lib #Changes for DebianDog.
+  #mv /lib/modules /pup_rw/lib/ #Changes for DebianDog.
   mkdir -p /pup_rw/initrd
   cp -af /DISTRO_SPECS /pup_rw/initrd/
   cp -af /init /pup_rw/initrd/
