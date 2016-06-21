@@ -19,7 +19,9 @@ Add CLI versions for both remasterdog and remastercow.
 
 **8.** Replace gnome-mplayer-1.0.7 with gmplayer-portable.
 
-**9.** Add encrypted save file option in live-boot-2.
+**9.** Add encrypted save file option in live-boot-2 and fsck for save file.
+
+**10.** Add Puppy-boot option - Puppy linux initrd.gz working with official Debian kernel.
 
 
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
