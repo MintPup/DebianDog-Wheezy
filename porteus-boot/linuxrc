@@ -455,7 +455,7 @@ cp -f /union/lib/systemd/systemd /bin
 		if [ $? -eq 0 ]; then
 echo "[1m""using systemd...""[0m"
     pivot_root /union  /union/mnt/live
-    exec bin/chroot . /mnt/live/bin/systemd "$@" <dev/console >dev/console 2>&1
+    exec usr/sbin/chroot . /mnt/live/bin/systemd "$@" <dev/console >dev/console 2>&1 #Use official Debian chroot binary
 		else
     echo -e "[31m""!!ERROR!!\nSomething went wrong and I cannot continue.\nPress Ctrl+Alt+Del to reboot.""[0m"
     sh  
@@ -465,7 +465,7 @@ echo "[1m""using systemd...""[0m"
 cp -f /union/sbin/init /bin
 		if [ $? -eq 0 ]; then
     pivot_root /union  /union/mnt/live
-    exec bin/chroot . /mnt/live/bin/init "$@" <dev/console >dev/console 2>&1
+    exec usr/sbin/chroot . /mnt/live/bin/init "$@" <dev/console >dev/console 2>&1 #Use official Debian chroot binary.
 		else
     echo -e "[31m""!!ERROR!!\nSomething went wrong and I cannot continue.\nPress Ctrl+Alt+Del to reboot.""[0m"
     sh
@@ -479,7 +479,7 @@ cp -f /union/lib/systemd/systemd /bin
 		if [ $? -eq 0 ]; then
 echo "[1m""using systemd...""[0m"
     pivot_root /union  /union/mnt/live
-    exec bin/chroot . /mnt/live/bin/systemd "$@" <dev/console >dev/console 2>&1
+    exec usr/sbin/chroot . /mnt/live/bin/systemd "$@" <dev/console >dev/console 2>&1 #Use official Debian chroot binary.
 		else
     echo -e "[31m""!!ERROR!!\nSomething went wrong and I cannot continue.\nPress Ctrl+Alt+Del to reboot.""[0m"
     sh  
@@ -488,7 +488,7 @@ echo "[1m""using systemd...""[0m"
 cp -f /union/sbin/init /bin
 		if [ $? -eq 0 ]; then
     pivot_root /union  /union/mnt/live
-    exec bin/chroot . /mnt/live/bin/init "$@" <dev/console >dev/console 2>&1
+    exec usr/sbin/chroot . /mnt/live/bin/init "$@" <dev/console >dev/console 2>&1 #Use official Debian chroot binary.
 		else
     echo -e "[31m""!!ERROR!!\nSomething went wrong and I cannot continue.\nPress Ctrl+Alt+Del to reboot.""[0m"
     sh
