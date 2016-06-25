@@ -2036,40 +2036,6 @@ ln -s /initrd/mnt/dev_save /pup_new/live/image
 else
 ln -s /initrd/mnt/dev_ro2 /pup_new/live/image
 fi
-# Prompt to mount swap partition or /live/image/pupswap.swp:
-echo '#!/bin/bash
-
-swapcheck() {
-/opt/bin/mount-swap
-rm -f /root/Startup/swap-start
-rm -f /initrd/tmp/swap-prompt
-}
-
-echo ###
-echo "Do you want to check for SWAP partition or pupswap.swp file and mount it?"
-echo ###
-echo "1)Yes, check and mount."
-echo "2)No, close this window."
-echo ###
-echo "Type the number and press Enter."
-echo ###
-
-read n
-case $n in
-    1) swapcheck;;
-    2) exit;;
-esac
-exit 0' > /pup_new/initrd/tmp/swap-prompt
-chmod u+x /pup_new/initrd/tmp/swap-prompt
-
-mkdir -p /pup_new/root
-mkdir -p /pup_new/root/Startup
-echo '#!/bin/bash
-if [ -f /initrd/tmp/swap-prompt ]; then
-xterm -e /initrd/tmp/swap-prompt
-fi
-exit 0' > /pup_new/root/Startup/swap-start
-chmod u+x /pup_new/root/Startup/swap-start
 
 ################################## Changes for DebianDog end. ######################################
 
