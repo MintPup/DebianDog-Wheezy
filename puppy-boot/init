@@ -1937,6 +1937,16 @@ mkdir -p /pup_new/initrd/mnt/zdrv
 mkdir -p /pup_new/initrd/mnt/adrv
 mkdir -p /pup_new/initrd/mnt/ydrv
 mkdir -p /pup_new/initrd/tmp
+
+#Changes for DebianDog start (systemd boot option):
+if grep -q init=/bin/systemd /proc/cmdline; then
+echo "Booting with systemd..."
+touch /pup_new/initrd/tmp/systemd-boot.txt
+else
+echo "Booting with /sbin/init..."
+fi
+#Changes for DebianDog end.
+
 for ONEMNT in `mount | cut -f 3 -d ' ' | grep -v 'pup_new' | grep '^/pup_' | tr '\n' ' '`
 do
  mount -o move $ONEMNT /pup_new/initrd${ONEMNT}
@@ -2064,6 +2074,15 @@ chmod u+x /pup_new/root/Startup/swap-start
 ################################## Changes for DebianDog end. ######################################
 
 #now using cpio archive for initramfs 'initial ramdisk'...
+
+#Changes for DebianDog start (systemd boot option):
+if [ -f /pup_new/initrd/tmp/systemd-boot.txt ]; then
+echo "Booting with systemd..."
+rm -f /pup_new/initrd/tmp/systemd-boot.txt
+exec switch_root /pup_new /lib/systemd/systemd
+else
 exec switch_root /pup_new /sbin/init
+fi
+#Changes for DebianDog end.
 
 ###END###
