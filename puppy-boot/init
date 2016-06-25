@@ -2042,7 +2042,7 @@ fi
 #now using cpio archive for initramfs 'initial ramdisk'...
 
 #Changes for DebianDog start (systemd boot option):
-if [ -f /pup_new/initrd/tmp/systemd-boot.txt ]; then
+if [ -f /pup_new/initrd/tmp/systemd-boot.txt ] && [ -f /pup_new/lib/systemd/systemd ]; then
 echo "Booting with systemd..."
 rm -f /pup_new/initrd/tmp/systemd-boot.txt
 exec switch_root /pup_new /lib/systemd/systemd
