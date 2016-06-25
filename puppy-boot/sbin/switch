@@ -7,4 +7,15 @@ umount /sys
 umount /proc
 
 #now using cpio archive for initramfs 'initial ramdisk'...
+#exec switch_root /pup_new /sbin/init
+
+#Changes for DebianDog start (systemd boot option):
+if [ -f /pup_new/initrd/tmp/systemd-boot.txt ]; then
+echo "Booting with systemd..."
+rm -f /pup_new/initrd/tmp/systemd-boot.txt
+exec switch_root /pup_new /lib/systemd/systemd
+else
 exec switch_root /pup_new /sbin/init
+fi
+#Changes for DebianDog end.
+
