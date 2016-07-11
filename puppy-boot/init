@@ -1941,7 +1941,7 @@ mkdir -p /pup_new/initrd/tmp
 
 #Changes for DebianDog start (systemd boot option):
 if grep -q init=/bin/systemd /proc/cmdline; then
-echo "Booting with systemd..."
+echo "init=/bin/systemd boot paramether detected..."
 touch /pup_new/initrd/tmp/systemd-boot.txt
 else
 echo "Booting with /sbin/init..."
