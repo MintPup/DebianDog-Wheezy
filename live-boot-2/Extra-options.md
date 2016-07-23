@@ -158,3 +158,17 @@ Save file fsck works after including e2fsck and the libs for it in initrd1.img
 The option is active after adding **forcepersistentfsck** to the boot code.
 But this option is missing in live-boot-3 and later.
 
+**3.** In live-boot-3 and 4 Copy on Write option booting with no-persistence boot code is located in /lib/live/mount/overlay but it seems empty at first. For DebianDog I made a script called [cow-nosave](http://murga-linux.com/puppy/viewtopic.php?p=798823#798823) over two years ago. It is included in all Jwm versions (in the last iso in /opt/bin/special/old) and in [new-kernel-scripts.tar.gz](https://9eb8f45ca0acc9dd68fbe8a604cd7299aa432000.googledrive.com/host/0B8P7qC27sushWHg2VFB6QTRJLW8/DebianDog-Wheezy/Old-Versions/Packages/).
+
+```
+#!/bin/bash
+
+/opt/bin/remount-rw
+rm -fr /live/cow
+rm -fr /live/image
+umount /lib/live/mount/overlay
+ln -s /lib/live/mount/overlay /live/cow
+ln -s  /lib/live/mount/medium /live/image
+```
+
+The important command is umount /lib/live/mount/overlay to make the files visible. Later improved version /opt/bin/cowsave from Fred replaced cow-nosave, cow-save-file and cow-save-part scripts.
