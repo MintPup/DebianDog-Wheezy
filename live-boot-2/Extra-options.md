@@ -146,6 +146,92 @@ I'm not sure if we need to copy in changes.dir also /live/cow/.wh..wh.aufs, /liv
 Otherwise it is easy to copy them once only with:
 `cp -af /live/cow/.wh* /live/image/live/changes.dir`
 
+
+The option to load directories is much more important as I thought. Live-boot loads up to 7 squashfs modules on boot inside "live" and it fails to boot if you add more. But this is not the case if you load directories from "live".  Probabaly because directories do not use loop device according to mount command output. Tested to load one squashfs module, one .ext2 module and 13 directories inside "live" and the system boots without problem. Each .dir containes inside empty text file with the directory number and all are loaded after boot:
+
+```
+root@debian:~# ls -l /
+total 28
+-rw-r--r--  1 root root     0 Jul 16 14:12 1.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 10.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 11.txt
+-rw-r--r--  1 root root     0 Jul 15 18:41 111.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 12.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 2.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 3.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 4.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 5.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 6.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 7.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 8.txt
+-rw-r--r--  1 root root     0 Jul 16 14:12 9.txt
+-rw-r--r--  1 root root     0 Jul 13 09:38 Dir-load-OK.txt
+drwxr-xr-x  2 root root  4096 Jul 14 10:02 bin
+drwxr-xr-x  2 root root    41 May 14  2014 boot
+drwxr-xr-x 14 root root  2980 Jul 16 14:17 dev
+drwxr-xr-x 75 root root    60 Jul 14 11:06 etc
+drwxr-xr-x  3 root root    28 Mar 19  2014 home
+drwxr-xr-x 17 root root  4096 Jun  5 22:01 lib
+drwxrwxrwt 19 root root   380 Jul 16 14:17 live
+drwxr-xr-x  2 root root     3 Mar 17  2014 live-rw-backing
+-rw-r--r--  1 root root     0 Jul 16 14:16 live-sn.ext2.txt
+drwxr-xr-x  3 root root  4096 Jul 14 09:06 media
+drwxr-xr-x  2 root root     3 Jul 11 16:36 mnt
+dr-xr-xr-x 70 root root     0 Jul 16 14:17 proc
+drwx------ 17 root root    80 Jul 16 14:17 root
+drwxr-xr-x 10 root root   280 Jul 16 14:17 run
+drwxr-xr-x  2 root root  2548 Jun 16 09:59 sbin
+drwxr-sr-x  4 root staff  974 Jul 11 17:43 scripts
+drwxr-xr-x  2 root root     3 Jan 26  2014 selinux
+drwxr-xr-x  2 root root     3 Jan 26  2014 srv
+drwxr-xr-x 12 root root     0 Jul 16 14:17 sys
+drwxrwxrwt  4 root root   120 Jul 16 14:18 tmp
+drwxr-xr-x 13 root root  4096 May 28 08:50 usr
+drwxr-xr-x 16 root root    80 Jan 23  2015 var
+```
+```
+root@debian:~# ls -l /live
+total 5
+drwxr-xr-x 23 root root  346 Jul 11 16:42 01-filesystem.squashfs
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a1.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a10.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a11.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a12.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a2.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a3.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a4.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a5.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a6.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a7.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a8.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 a9.dir
+drwxr-xr-x  2 root root   40 Jul 16 14:17 changes.dir
+drwxr-xr-x  8 root root  180 Jul 16 14:17 cow
+drwxr-xr-x 34 root root 4096 Jul 15 09:28 image
+drwxr-xr-x  2 root root 1024 Jul 16 14:16 live-sn.ext2
+```
+```
+
+root@debian:~# mount
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+udev on /dev type devtmpfs (rw,relatime,size=10240k,nr_inodes=30177,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,noexec,relatime,size=25372k,mode=755)
+/dev/sda1 on /live/image type ext3 (rw,noatime,errors=continue,barrier=1,data=ordered)
+/dev/loop0 on /live/01-filesystem.squashfs type squashfs (ro,noatime)
+/dev/loop1 on /live/live-sn.ext2 type ext2 (ro,noatime)
+tmpfs on /live/cow type tmpfs (rw,noatime,mode=755)
+aufs on / type aufs (rw,relatime,si=39b7f5f5,noxino)
+tmpfs on /live type tmpfs (rw,relatime)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+tmpfs on /run/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=50720k)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,relatime)
+```
+
+Live-boot has many persistent options missing from the official documentation. Multiple directories loading on boot could make possible saving sessions on CD/DVD like in Puppy linux.  This should be possible also with Ubuntu based live systems using casper-boot. Casper also loads directory content on boot from limited testing.
+
+
 **2.** Save file fsck:
 
 In live-boot-2 /scripts/live we have one more option missing from the official documentation:
