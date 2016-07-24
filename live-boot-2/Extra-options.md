@@ -258,3 +258,13 @@ ln -s  /lib/live/mount/medium /live/image
 ```
 
 The important command is umount /lib/live/mount/overlay to make the files visible. Later improved version /opt/bin/cowsave from Fred replaced cow-nosave, cow-save-file and cow-save-part scripts.
+
+**4.** The perfect full install.
+
+I've described this method using save file or save partition in [How to reduce the size of Debian Live image 
+](http://www.murga-linux.com/puppy/viewtopic.php?p=741783&sid=8dddf480959eaeee388f8c9dfc40d390#741783) and [here.](http://murga-linux.com/puppy/viewtopic.php?p=771639#771639) But now the option to save changes on exit in directory with live-boot makes possible to have perfect full install.
+
+In short using live-boot (2 or 3 or 4) with persistent boot code and having in "live" **empty** 01-filesystem.squashfs and the system (the content of 01-filesystem.squashfs)  extracted in changes.dir folder you will boot in frugal mode with read-only system in changes.dir. Any changes you make will be lost after reboot if you dont save on exit. But when you save changes in changes.dir there will be no duplicated files in the empty 01-filesystem.squashfs and changes.dir and there is no need to remaster the system anymore. The remastering or backup process could be simple archive of changes.dir folder portable to install (extract) on different drive, usbflash or sdcard. And the system boots uncomressed changes.dir content much faster compared to squashfs module. You get all advantages of full install in frugal mode keeping the option to save or not your changes and to load extra squashfs modules.
+
+Live-boot gives unique persistent options. [Again my thanks to Daniel Baumann!](https://lists.debian.org/debian-live/2015/11/msg00024.html)
+
