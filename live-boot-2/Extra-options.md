@@ -269,3 +269,15 @@ There is no problem to combine this boot method with real save file or partition
 
 Live-boot gives unique persistent options. [Again my thanks to Daniel Baumann!](https://lists.debian.org/debian-live/2015/11/msg00024.html)
 
+This type of boot solves also the kernel upgrades. Since all system files are in changes.dir and can be updated/replaced all we need to do is moving initrd1.img or initrd.img and vmlinuz1 in /live/changes.dir/boot with the original names (vmlinuz-3.2.0-4-486 and initrd.img-3.2.0-4-486). Then the boot code example will be:
+
+```
+title DebianDog perfect full install on sda1 (ext3) inside "live"
+root=(hd0,0) 
+kernel /live/changes.dir/boot/vmlinuz-3.2.0-4-486 boot=live showmounts
+initrd /live/changes.dir/boot/initrd.img-3.2.0-4-486
+```
+Now we can remove the kernel pinning in /live/changes.dir/etc/apt/preferences and reboot. The kernel can be upgraded without duplicating files using save on exit after the upgrade. The initrd.img and vmlinuz in /live/changes.dir/boot will be replaced with updated versions after the upgrade.
+
+This works well with live-boot-3,4 without persistence save file. Unfortunately adding persistence save file (in case you don't have much RAM) fails the boot process (works fine with live-boot-2). I suspect the problem is related with the wrong modules loading in live-boot-3,4 using persistence with more than one squashfs module (from Z to A instead from A to Z). Maybe I will try to fix this for live-boot-3,4 but I feel it has many disadvantages compared to live-boot-2, especially when live-boot-2 supports now [encrypted save file](https://github.com/MintPup/DebianDog-Wheezy/commit/c124d939f31415e2ef3c641c36ddd55e42431695#diff-5ecdb4a03b89fc9471978e363fef3f1b) and [persistent save file on NTFS boot partition](https://github.com/MintPup/DebianDog-Wheezy/commit/a9d2875fffda59f81940629fb9825b93a599779e#diff-5ecdb4a03b89fc9471978e363fef3f1b).
+Live-boot-2 doesn't have any of the problems in later versions and I think it is the most flexible boot and persistent method. I feel patched live-boot-2 deb package with ntfs and encrypted save support is the best option to boot the system with new generated initrd.img after installing the deb. Probabaly universal solution to add flexible persistent options in official Debian/Ubuntu live systems.
