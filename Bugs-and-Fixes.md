@@ -23,6 +23,13 @@ Add CLI versions for both remasterdog and remastercow.
 
 **10.** Add Puppy-boot option - Puppy linux initrd.gz working with official Debian kernel.
 
+**11.** Fix the PATH for user and root accounts. It was a mistake to add so many scripts and links outside debian repository everywhere - /opt/bin:/bin:/usr/bin:/usr/local/bin... Some scripts are not even registered in /var/lib/dpkg/info and conflicts with same named offcial Debian scripts are already reality (like /usr/bin/dog script conflicting with official /usr/sbin/dog from official sheepdog deb package). I'm sure more will be discovered in the future. It is too late for fixing this properly in next iso version but fixing the PATH priority will prevent breaking official packages in the future:
+```
+root@debian:~# echo $PATH
+/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/games:/usr/local/games:/opt/bin
+
+```
+I will move and maybe rename some scripts for porteus-boot from /usr/bin and /usr/local/bin.
 
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
 
