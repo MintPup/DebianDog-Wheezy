@@ -31,6 +31,10 @@ root@debian:~# echo $PATH
 ```
 I will move and maybe rename some scripts for porteus-boot from /usr/bin and /usr/local/bin.
 
+**12.** The system depends too much on yad and gtkdialog. We have command line scripts with yad or even both (yad and gtkdialog lines inside) just to popup GUI message. Removing yad or gtkdialog or both leaves you with broken system and most scripts left in /opt/bin don't work anymore. Some packages like pburn include strange choice of scripts like pet2tgz inside?
+
+Edit and organise the structure for special debdog scripts and packages that will stay in the iso and keep them in one place (/opt/bin maybe as lowest priority in PATH). Restoring sh link to dash or removing yad or gtkdialog should not kill or cripple DebianDog.
+
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
 
 
