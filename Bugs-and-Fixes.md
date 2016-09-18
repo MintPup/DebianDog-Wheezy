@@ -35,6 +35,13 @@ I will move and maybe rename some scripts for porteus-boot from /usr/bin and /us
 
 Edit and organise the structure for special debdog scripts and packages that will stay in the iso and keep them in one place (/opt/bin maybe as lowest priority in PATH). Restoring sh link to dash or removing yad or gtkdialog should not kill or cripple DebianDog.
 
+**13.** All 4 apt2sfs scripts included in the iso will fail if you decide to install resolvconf and remaster the system. Then /etc/resolv.conf is link to /run/resolvconf/resolv.conf and in chroot environment /mnt/union*/etc/resolv.conf is a link to /etc/resolv.conf/run/resolvconf/resolv.conf. The "echo -en..." command fails and the result is broken internet connection and the script exits. This line before "echo -en..." in each script fixes the problem for now.
+
+```
+rm -f $UNION/etc/resolv.conf && touch $UNION/etc/resolv.conf #20160918 saintless - without this the script fails after remaster with official resolvconf package.
+echo -en "`cat /etc/resolv.conf`" > $UNION/etc/resolv.conf
+```
+
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
 
 
