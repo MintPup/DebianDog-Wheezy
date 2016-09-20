@@ -41,6 +41,7 @@ Edit and organise the structure for special debdog scripts and packages that wil
 rm -f $UNION/etc/resolv.conf && touch $UNION/etc/resolv.conf #20160918 saintless - without this the script fails after remaster with official resolvconf package.
 echo -en "`cat /etc/resolv.conf`" > $UNION/etc/resolv.conf
 ```
+Some more changes and fixes in apt2sfs posted here [apt2sfs.sh](https://github.com/MintPup/DebianDog-Wheezy/blob/master/scripts/apt2sfs.sh). It is renamed apt2sfs-cli-fullinst with some changes and the only apt2sfs version I plan to include in the future. Now works also from console as user and root in frugal and full install. No need to keep 4 scripts for the same job.
 
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
 
