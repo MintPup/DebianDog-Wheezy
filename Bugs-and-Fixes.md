@@ -43,6 +43,25 @@ echo -en "`cat /etc/resolv.conf`" > $UNION/etc/resolv.conf
 ```
 Some more changes and fixes in apt2sfs posted here [apt2sfs.sh](https://github.com/MintPup/DebianDog-Wheezy/blob/master/scripts/apt2sfs.sh). It is renamed apt2sfs-cli-fullinst with some changes and the only apt2sfs version I plan to include in the future. Now works also from console as user and root in frugal and full install. No need to keep 4 scripts for the same job.
 
+**14.** I will try to provide a way to update previous Jwm iso with all new changes. Script changes will be available [here](https://github.com/MintPup/DebianDog-Wheezy/blob/master/scripts/) and updated packages and initrd files will be uploaded [here](http://kazzascorner.com.au/saintless/DebianDog/DebianDog-Wheezy/updates/).
+Nice workaround for gtkdialog <-> dash problem provided by fredx181 in this [gtkdialog_0.8.3-2_i386.deb](http://debiandog.github.io/Jessie/i386/Packages/Included/gtkdialog_0.8.3-2_i386.deb), but started with switchsh gtkdialog uses 31Mb RAM compared to 9Mb without switchsh and sh link to bash. So I will use switchsh only in case dash is the default shell keeping bash as default:
+```
+#!/bin/bash
+if [ "$(echo "bash")" = "$(readlink /bin/sh)" ]; then
+gtkdialog3bin "$@"
+else
+exec switchsh gtkdialog3bin "$@"
+fi
+```
+```
+#!/bin/bash
+if [ "$(echo "bash")" = "$(readlink /bin/sh)" ]; then
+gtkdialogbin "$@"
+else
+exec switchsh gtkdialogbin "$@"
+fi
+```
+
 **List of DebianDog-Wheezy fixes found after 04.09.2015 (will be included in next JWM iso update):**
 
 
