@@ -12,9 +12,9 @@ fi
 
 #saintless - workaround for DebianDog with sh link to dash.
 if [ -z `which gtkdialogbin` ];then
-gtkdialog="/opt/bin/gtkdialog"
+gtkdialog="gtkdialog"
 else
-gtkdialog="/opt/bin/gtkdialogbin"
+gtkdialog="gtkdialogbin"
 fi
 
 
