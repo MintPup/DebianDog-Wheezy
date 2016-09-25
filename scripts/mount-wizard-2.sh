@@ -18,7 +18,7 @@ gtkdialog="/opt/bin/gtkdialogbin"
 fi
 
 
-[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar FLMAN=default_file-browser
+[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar || FLMAN=default_file-browser
 
 while true
 do
