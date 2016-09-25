@@ -23,7 +23,7 @@ echo -e "\e[0;32mor run the script again using sudo.\033[0m"
 
 read -p "Do you want to continue? (y/n)?" choose
 case "$choose" in
-  y|Y ) continue;;
+  y|Y ) echo "Continue...";;
   n|N ) exit 0;;
   * ) exit 0;;
 esac
