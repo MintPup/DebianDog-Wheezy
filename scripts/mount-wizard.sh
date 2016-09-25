@@ -10,7 +10,7 @@
  
 # Uses thunar as filemanager (for openbox version) but only if both thunar AND openbox are installed, to use xfe instead of rox on Jwm version replace "rox -d" with xfe on the next line.
 #[[ `which thunar` && `which openbox` ]] && FLMAN=thunar || FLMAN=rox || FLMAN=defaultfilemanager
-[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar FLMAN=default_file-browser #saintless
+[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar || FLMAN=default_file-browser #saintless
 
 #which gsu && gsu=gsu || gsu=sudo
 if [ -z `which gsu` ];then
