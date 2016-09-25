@@ -10,7 +10,7 @@ http://www.smokey01.com/saintless/DebianDog/Packages/Included/
 
 http://www.smokey01.com/saintless/DebianDog/Packages/Extra/
 
-http://www.smokey01.com/saintless/DebianDog/Packages/Included/
+https://drive.google.com/open?id=0B8P7qC27sushWHg2VFB6QTRJLW8
 
 And as squashfs module with special DebianDog packages and scripts:
 
