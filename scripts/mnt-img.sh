@@ -14,7 +14,7 @@ else
 [ "`whoami`" != "root" ] && exec gsu ${0} "$@"
 fi
 
-[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar FLMAN=default_file-browser
+[ `which xfe` ] && FLMAN=xfe || FLMAN=rox || FLMAN=thunar || FLMAN=default_file-browser
 
 case "$1" in
 	''|?|-h|--help)
