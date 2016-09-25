@@ -21,7 +21,7 @@ else
 [ "`whoami`" != "root" ] && exec gsu ${0} "$@"
 fi
 
-if ping -c1 dudckduckgo.com 2>&1 | grep unknown; then
+if ping -c1 duckduckgo.com 2>&1 | grep unknown; then
 xmessage "You dont have working internet connection. Exiting now."
 exit 1
 else
