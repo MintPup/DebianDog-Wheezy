@@ -4,12 +4,12 @@
 # 20160925 - saintless - sfs-get-cli console version - GNU GPL v3 applies.
 # No warranty of any kind... Use it at your own risk!
 
-if ping -c1 duckduckgo.com 2>&1 | grep unknown; then
-echo "You dont have working internet connection. Exiting now."
-sleep 5
-exit 1
-else
+# Ping your default gateway. Source: http://stackoverflow.com/a/14939373
+if ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null; then
 echo "Working internet connection found."
+else
+echo "You dont have working internet connection. Exiting now."
+exit 0
 fi
 
 SAVEDIR=$(pwd)
