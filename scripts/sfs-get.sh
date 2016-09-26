@@ -21,11 +21,12 @@ else
 [ "`whoami`" != "root" ] && exec gsu ${0} "$@"
 fi
 
-if ping -c1 duckduckgo.com 2>&1 | grep unknown; then
-xmessage "You dont have working internet connection. Exiting now."
-exit 1
-else
+# Ping your default gateway. Source: http://stackoverflow.com/a/14939373
+if ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null; then
 echo "Working internet connection found."
+else
+xmessage "You dont have working internet connection. Exiting now."
+exit 0
 fi
 
 # Variables for host directory and contents file:
