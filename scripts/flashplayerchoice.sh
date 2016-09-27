@@ -96,7 +96,7 @@ echo "5) Remove flushplugin-nonfree (if installed)."
 echo
 echo "6) Remove Flash-Player- 10, 11 or 23 (if exists)."
 echo
-echo "7) Any other key for for exit."
+echo " Any other key for exit."
 echo
 echo -e "\e[0;32m    *** Type the number and press Enter. ***\033[0m"
 echo
