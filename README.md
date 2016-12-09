@@ -13,3 +13,5 @@ I will keep this repository for reference and because of the fixes for NTFS part
 [Support for live-rw save file on NTFS partition.](https://github.com/MintPup/DebianDog-Wheezy/commit/a9d2875fffda59f81940629fb9825b93a599779e)
 
 [Support for persistence file on NTFS partition.](https://github.com/MintPup/DebianDog-Wheezy/commit/e2eb061df78b96429ac0c2f2d7740f05216d6748)
+
+DebianDog true story, sources and base iso images will be uploaded [**here**](https://github.com/debiandog-linux).
