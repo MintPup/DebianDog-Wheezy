@@ -14,4 +14,6 @@ I will keep this repository for reference and because of the fixes for NTFS part
 
 [Support for persistence file on NTFS partition.](https://github.com/MintPup/DebianDog-Wheezy/commit/e2eb061df78b96429ac0c2f2d7740f05216d6748)
 
-DebianDog true story, sources and base iso images will be uploaded [**here**](https://github.com/debiandog-linux).
+Life is strange with its twists and turns. Sometimes when people you trust betray you the only support you get comes from unexpected person. And I must admit I was quite rude to this person few times in the past. Sorry about that and thank you **anikin**.
+
+Goodbye.
