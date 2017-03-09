@@ -18,6 +18,6 @@ Life is strange with its twists and turns. Sometimes when people you trust betra
 
 
 I did what I can to solve the DebianDog project [development problems](http://murga-linux.com/puppy/viewtopic.php?p=946630#946630).
-Thank you for your help in that, **mcewanw**, and my [appology to you.](http://murga-linux.com/puppy/viewtopic.php?p=946622#946622)
+Thank you for your help in that, **mcewanw**, and my [apology to you.](http://murga-linux.com/puppy/viewtopic.php?p=946622#946622)
 
 Goodbye.
