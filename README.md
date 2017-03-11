@@ -17,7 +17,7 @@ I will keep this repository for reference and because of the fixes for NTFS part
 Life is strange with its twists and turns. Sometimes when people you trust betray you the only support you get comes from unexpected person. And I must admit I was quite rude to this person few times in the past. Sorry about that and thank you **anikin**.
 
 
-I did what I can to solve the DebianDog project [development problems](http://murga-linux.com/puppy/viewtopic.php?p=946630#946630).
+I did what I can to solve the DebianDog project [development problems](http://murga-linux.com/puppy/viewtopic.php?p=946902&sid=04cf5f681d684e12653ecb88ac0cb868#946902).
 Thank you for your help in that, **mcewanw**, and my [apology to you.](http://murga-linux.com/puppy/viewtopic.php?p=946622#946622)
 
 Goodbye.
