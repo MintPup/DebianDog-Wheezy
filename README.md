@@ -18,6 +18,7 @@ Life is strange with its twists and turns. Sometimes when people you trust betra
 
 
 I did what I can to solve the DebianDog project [development problems](http://murga-linux.com/puppy/viewtopic.php?p=946902&sid=04cf5f681d684e12653ecb88ac0cb868#946902).
-Thank you for your help in that, **mcewanw**, and my [apology to you.](http://murga-linux.com/puppy/viewtopic.php?p=946622#946622)
+
+At last all DebianDog and all based on it projects are free to modify and develop from anyone.
 
 Goodbye.
