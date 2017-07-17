@@ -1611,8 +1611,10 @@ zPSUBDIR=''
 #/etc/PUPSTATE passes useful variables to the running puppy...
 mkdir -p /pup_rw/etc/rc.d
 echo "PUPMODE=$PUPMODE" > /pup_rw/etc/rc.d/PUPSTATE
-echo "PDEV1='$PDEV1'" >> /pup_rw/etc/rc.d/PUPSTATE
-echo "DEV1FS='$DEV1FS'" >> /pup_rw/etc/rc.d/PUPSTATE
+#echo "PDEV1='$PDEV1'" >> /pup_rw/etc/rc.d/PUPSTATE
+echo "PDEV1='$(echo $PUPSFS | cut -s -f1 -d',')'">> /pup_rw/etc/rc.d/PUPSTATE #changes for DebianDog
+#echo "DEV1FS='$DEV1FS'" >> /pup_rw/etc/rc.d/PUPSTATE
+echo "DEV1FS='$(echo $PUPSFS | cut -s -f2 -d',')'">> /pup_rw/etc/rc.d/PUPSTATE #changes for DebianDog
 echo "PUPSFS='$PUPSFS'" >> /pup_rw/etc/rc.d/PUPSTATE
 echo "PUPSAVE='$PUPSAVE'" >> /pup_rw/etc/rc.d/PUPSTATE
 echo "PMEDIA='$PMEDIA'" >> /pup_rw/etc/rc.d/PUPSTATE
