@@ -1,3 +1,5 @@
+[More extra-options information in DebianDog-Squeeze repository.](https://github.com/MintPup/DebianDog-Squeeze/blob/master/live-boot-2/Extra-options.md)
+
 **1.** Save on Exit in save file or directory:
 
 This function in /scripts/live (live-boot-2) and /bin/boot/9990-misk-helpers.sh (live-boot-3 and 4) caught my eye:
