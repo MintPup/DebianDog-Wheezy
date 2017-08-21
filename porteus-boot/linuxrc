@@ -40,7 +40,7 @@ NOLOAD=`value noload | sed 's/;/|/g'`; [ $NOLOAD ] || NOLOAD=._null
 EXTRAMOD=`value extramod | sed 's/;/ /g'`
 RAMMOD=`value rammod | sed 's/;/|/g'`
 ROOTCOPY=`value rootcopy`
-FOLDER=live
+FOLDER="`value psubdir`" || FOLDER=live ###saintless - use psubdir= instead always depending on live (mod from linuxrc in in PuppyRus-A from sfs).
 livedbg=/var/log/livedbg
 
 # Device Functions:
@@ -181,9 +181,9 @@ elif [ $ISO ]; then SGNDEV=/mnt/isoloop
     locate -e $FROM && { BOOTDEV=/mnt/$DEV; mkdir /mnt/isoloop; mount -o loop /mnt/$DEV/$LPTH /mnt/isoloop; }
 else
     if [ $FROM ]; then
-	locate -e $FROM/live/$SGN
+	locate -e $FROM/$FOLDER/$SGN
 	if [ $? -eq 0 ]; then
-	    DIR=`echo $LPTH | rev | cut -d/ -f3- | rev`; [ $DIR ] && FOLDER=$DIR/live
+	    DIR=`echo $LPTH | rev | cut -d/ -f3- | rev`; [ $DIR ] && FOLDER=$DIR/$FOLDER
 	else
 	    echo $i"from= cheatcode is incorrect, press enter to search through all devices"
 	    read -s; search -e live/$SGN
