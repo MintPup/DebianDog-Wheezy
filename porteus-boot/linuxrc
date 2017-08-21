@@ -40,7 +40,8 @@ NOLOAD=`value noload | sed 's/;/|/g'`; [ $NOLOAD ] || NOLOAD=._null
 EXTRAMOD=`value extramod | sed 's/;/ /g'`
 RAMMOD=`value rammod | sed 's/;/|/g'`
 ROOTCOPY=`value rootcopy`
-FOLDER="`value psubdir`" || FOLDER=live ###saintless - use psubdir= instead always depending on live (mod from linuxrc in in PuppyRus-A from sfs).
+FOLDER=`value psubdir`; [ $FOLDER ] || FOLDER=live #saintless - use psubdir= instead always depending on live (mod from linuxrc in in PuppyRus-A from sfs).
+
 livedbg=/var/log/livedbg
 
 # Device Functions:
